@@ -24,9 +24,9 @@
 </li>
 </ol>
 <p>将本地与服务器的 rsa 公钥添加到 github，建议将本地的公钥添加到账户 Settings 里面的 SSH and GPG keys</p>
-<p><img src="../image/pm2-3.jpg" alt=""></p>
+<p><img src="/images/pm2-3.jpg" alt=""></p>
 <p>将服务器的 rsa 公钥添加到项目下 Settings 里面的 Deploy keys，这样服务器只能从 github 拉取代码，而不能提交，禁止从服务器端修改代码</p>
-<p><img src="../image/pm2-1.jpg" alt=""><br><img src="../image/pm2-2.jpg" alt=""></p>
+<p><img src="/images/pm2-1.jpg" alt=""><br><img src="/images/pm2-2.jpg" alt=""></p>
 <p>分别在本地和服务端输入指令 <code>ssh -T git@github.com</code> 验证是否与 github 打通。</p>
 <p>至此，三方的免密认证完成。</p>
 <h3 id="pm2-配置"><a href="#pm2-配置" class="headerlink" title="pm2 配置"></a>pm2 配置</h3><p>关于 pm2 的介绍和常用指令，查看<a href="https://segmentfault.com/a/1190000018439311" target="_blank" rel="noopener">这里</a></p>
@@ -47,9 +47,9 @@
 <p><code>pm2 deploy ecosystem.config.js production</code></p>
 <p>看到 success，成功</p>
 <h3 id="服务器查看运行"><a href="#服务器查看运行" class="headerlink" title="服务器查看运行"></a>服务器查看运行</h3><p>服务器运行<code>pm2 list</code>，查看进程是否启动</p>
-<p><img src="../image/pm2-4.jpg" alt=""></p>
+<p><img src="/images/pm2-4.jpg" alt=""></p>
 <p>我刚开始运行，status 那里是 errored 状态，如果你也遇到这种状况，可以运行 <code>pm2 show 0</code> 查看出错信息</p>
-<p><img src="../image/pm2-5.jpg" alt=""></p>
+<p><img src="/images/pm2-5.jpg" alt=""></p>
 <p>我之后有在服务器运行了<code>node /var/www/website/source/app.js</code>，提示我端口被占用，我改了一下端口，再执行 <code>pm2 deploy ecosystem.config.js production</code>，解决！</p>
 </div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/03/11/deploy-git-server/">搭建Git服务器</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-03-11</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a></span><div class="content"><h4 id="服务器安装-git"><a href="#服务器安装-git" class="headerlink" title="服务器安装 git"></a>服务器安装 git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 查看用户信息</span><br><span class="line">[root@VM_0_14_centos ~]# uname -a</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 安装</span><br><span class="line">[root@VM_0_14_centos ~]# yum -y install git</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 查看是否安装成功</span><br><span class="line">[root@VM_0_14_centos ~]# git --version</span><br><span class="line">git version 1.8.3.1</span><br></pre></td></tr></table></figure>
 
